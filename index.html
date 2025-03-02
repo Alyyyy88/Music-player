@@ -12,48 +12,53 @@
     />
 
     <title>Music Player | devChallenges.io</title>
+    <link rel="stylesheet" href="style.css">
 
-    <!--You are welcome to delete these styles or modify them in your own stylesheet -->
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        height: 100vh;
-      }
-
-      .author-info {
-        font-size: 14px;
-        text-align: center;
-        margin-top: 16px;
-        color: rgb(55, 65, 81);
-      }
-
-      .author-info a {
-        text-decoration: none;
-      }
-    </style>
   </head>
   <body>
-    <!-- 
 
-  Lost in the City Lights
-  
-  Cosmo Sheldrake
+    <div class="container">
+      <div class="img-con">
+        <img src="./resources/cover-1.jpg" alt="" class="img_cover" width="120px">
+      </div>
+      <div class="title-con">
+        <p class="song_name">
+          Lost in the City Lights
+        </p>
+        <p class="artist_name">
+          Cosmo Sheldrake
+        </p>
+      </div>
+      <div class="audio-player">
+        <audio id="myAudio">
+          <source src="audio-file.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        <div class="progress-container" onclick="seekAudio(event)">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <div class="volume-container">
+          <label for="volume">Volume:</label>
+          <input type="range" id="volume" min="0" max="1" step="0.1" value="1" oninput="setVolume(this.value)">
+        </div>
+      </div>
+      <div class="controllers">
+        <div class="prev_btn">
+          <img src="./resources/Stop_and_play_fill-1.svg" alt="rev_btn">
+        </div>
+        <div class="play_btn">
+          <img src="./resources/Play_fill.svg" alt="">
+        </div>
+        <div class="next_btn">
+          <img src="./resources/Stop_and_play_fill.svg" alt="">
 
-  Forest Lullaby
-  
-  Lesfm
-  -->
-
-    <div class="author-info">
-      Coded by <a href="#">Your Name Here</a> | Challenge by
-      <a href="https://www.devchallenges.io?ref=challenge" target="_blank"
-        >devChallenges.io</a
-      >.
+        </div>
+      </div>
     </div>
+
+
+
+
+    <script src="app.js"></script>
   </body>
 </html>
