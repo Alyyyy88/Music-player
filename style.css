@@ -69,11 +69,42 @@ body{
   cursor: pointer;
 }
 
-.play_btn img{
-  width: 70px;
-  background-color: #C93B76;
+.play_pause_con{
+  width: 80px;
+  height: 80px;
+  background-color:#C93B76;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 50%;
+  filter: drop-shadow(0px 8px 20px rgba(201, 59, 118, 0.25));
+  transition: box-shadow 0.4s ease-in-out;
 }
+
+.play_btn {
+  width: 100%;
+  height: 100%; /* Match the parent container's height */
+  object-fit: cover;
+}
+
+
+.pause_btn{
+  width: 10%;
+  display: none;
+}
+.pause_btn.active{
+  display: block;
+}
+
+.play_btn.nonactive{
+  display: none;
+}
+
+.play_pause_con:hover{
+  box-shadow: 0px 0px 77px 3px rgba(201,59,118,1);
+}
+
+
 
 .music_progress{
   width: 100%;
@@ -110,5 +141,4 @@ body{
   transition: width .12sease-in-out;
   cursor: pointer;
 }
-
 
