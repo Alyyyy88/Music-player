@@ -52,22 +52,63 @@ body{
   font-size: 14px;
 }
 
-.audio_scroll{
-  background-color: red;
-  outline: none;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#progress{
-  -webkit-appearance: none;
-  width: 100%;
-  background-color: white;
-  height: 6px;
-}
-
-
 
  
+.controllers{
+  /* width: 100%; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 12px 0px;
+  padding: 20px;
+  gap: 28px;
+}
+
+.controllers img{
+  width: 40px;
+  cursor: pointer;
+}
+
+.play_btn img{
+  width: 70px;
+  background-color: #C93B76;
+  border-radius: 50%;
+}
+
+.music_progress{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.time_display{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  color: #4D5562;
+  font-size: 14px;
+}
+
+
+
+.music_progress .music_progress_container {
+  width: 100%;
+  height: .3125rem;
+  background-color: hsl(220, 13%, 91%);
+  border-radius: 100vmax;
+  margin-block-start: min(.25rem, .5vh);
+  cursor: pointer;
+}
+
+.music_progress .music_progress_containe .music__progress {
+  height: 100%;
+  background-color: #C93B76;
+  border-radius: 100vmax;
+  transition: width .12sease-in-out;
+  cursor: pointer;
+}
+
+
