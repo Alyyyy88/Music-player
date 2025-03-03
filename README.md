@@ -9,11 +9,11 @@
 
 <div align="center">
   <h3>
-    <a href="{https://your-demo-link.your-domain}">
+    <a href="https://music-player-devch.netlify.app/">
       Demo
     </a>
     <span> | </span>
-    <a href="{https://your-url-to-the-solution}">
+    <a href="https://github.com/Alyyyy88/Music-player">
       Solution
     </a>
     <span> | </span>
