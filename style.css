@@ -125,16 +125,17 @@ body{
 
 
 
-.music_progress .music_progress_container {
+ .music_progress_container {
   width: 100%;
   height: .3125rem;
   background-color: hsl(220, 13%, 91%);
+  /* background-color: #C93B76; */
   border-radius: 100vmax;
   margin-block-start: min(.25rem, .5vh);
   cursor: pointer;
 }
 
-.music_progress .music_progress_containe .music__progress {
+.music_progress .music_progress_container .music__progress {
   height: 100%;
   background-color: #C93B76;
   border-radius: 100vmax;
@@ -142,3 +143,11 @@ body{
   cursor: pointer;
 }
 
+.con_details{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}

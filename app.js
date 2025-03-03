@@ -13,24 +13,30 @@ const songs = [
   },
 ];
 
-let currentSongIndex = 1;
+let currentSongIndex = 0;
 
 const audio = new Audio(songs[currentSongIndex].src);
-const container = document.querySelector(".container");
+const container = document.querySelector(".con_details");
+const songDuartion = document.querySelector(".total_time");
+const remainTime = document.querySelector(".remain_time");
+const progressBar = document.querySelector(".music__progress");
 
-const songHTML = `<div class="img-con">
-        <img src="${songs[currentSongIndex].img}" alt="imgcover" class="img_cover" width="120px">
-      </div>
-      <div class="title-con">
-        <p class="song_name">
-          ${songs[currentSongIndex].title}
-        </p>
-        <p class="artist_name">
-          ${songs[currentSongIndex].author}
-        </p>
-      </div>`;
 
-container.insertAdjacentHTML("afterbegin",songHTML);
+const formatTime = (time) => {
+  const minutes = Math.floor(time / 60);
+  const seconds = Math.floor(time % 60);
+  return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+};
+
+
+audio.addEventListener("timeupdate", () => {
+  if (audio.duration) {
+      const progressPercent = (audio.currentTime / audio.duration) * 100;
+      progressBar.style.width = `${progressPercent}%`; 
+      remainTime.textContent = formatTime(audio.currentTime);
+  }
+});
+
 
 
 
@@ -50,61 +56,73 @@ pauseBtn.addEventListener("click",()=>{
 })
 
 
+const nextSong = document.querySelector(".next_btn");
+const prevSong = document.querySelector(".prev_btn");
+
+nextSong.addEventListener("click",()=>{
+  loadSong(currentSongIndex + 1);
+  playBtn.classList.remove("nonactive");
+  pauseBtn.classList.remove("active");
+
+})
+
+prevSong.addEventListener("click",()=>{
+  loadSong(currentSongIndex - 1);
+  playBtn.classList.remove("nonactive");
+  pauseBtn.classList.remove("active");
+
+})
 
 
+const loadSong = (index)=>{
+
+  if (index >= songs.length) {
+    currentSongIndex = 0; 
+  } else if (index < 0) {
+    currentSongIndex = songs.length - 1; 
+  } else {
+    currentSongIndex = index;
+  }
+
+  container.innerHTML = '';
+
+   const songHTML = `<div class="img-con">
+        <img src="${songs[currentSongIndex].img}" alt="imgcover" class="img_cover" width="120px">
+      </div>
+      <div class="title-con">
+        <p class="song_name">
+          ${songs[currentSongIndex].title}
+        </p>
+        <p class="artist_name">
+          ${songs[currentSongIndex].author}
+        </p>
+      </div>`;
+
+    container.insertAdjacentHTML("afterbegin",songHTML);
+    audio.src = songs[currentSongIndex].src;
+    audio.load();
+
+    if (!audio.paused) {
+      audio.play();
+    }
+    audio.addEventListener("loadedmetadata", ()=>{
+      songDuartion.textContent = formatTime(audio.duration);
+      remainTime.textContent = formatTime(audio.duration);
+    });
 
 
+  
+};
 
+audio.addEventListener("timeupdate", () => {
+  remainTime.textContent = formatTime(audio.duration - audio.currentTime);
+});
 
+document.querySelector(".music_progress_container").addEventListener("click", (e) => {
+  const containerWidth = e.currentTarget.clientWidth;
+  const clickX = e.offsetX;
+  const newTime = (clickX / containerWidth) * audio.duration;
+  audio.currentTime = newTime;
+});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function nextSong() {
-//   // Add next button implementation
-// }
-
-// function prevSong() {
-//   // Add previous button implementation
-// }
-
-// function loadSong(index) {
-//   // Add load song implementation
-// }
-
-// function updateProgressBar() {
-//   // Handle when progress bar is updated
-// }
-
-// document.getElementById("progressBar").addEventListener("input", function () {
-//   audio.currentTime = (this.value / 100) * audio.duration;
-// });
-
-// // Initial load
-// loadSong(currentSongIndex);
-
-
-
-
-
-
-
-
-// document.getElementById("nextButton").addEventListener("click", nextSong);
-// document.getElementById("prevButton").addEventListener("click", prevSong);
-// audio.addEventListener("timeupdate", updateProgressBar);
+loadSong(currentSongIndex);
