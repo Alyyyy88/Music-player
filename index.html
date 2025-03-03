@@ -29,19 +29,13 @@
           Cosmo Sheldrake
         </p>
       </div>
-      <div class="audio-player">
-        <audio id="myAudio">
-          <source src="audio-file.mp3" type="audio/mpeg">
+        <audio id="myAudio" controls>
+          <source src="./resources/lost-in-city-lights-145038.mp3" type="audio/mpeg">
           Your browser does not support the audio element.
         </audio>
-        <div class="progress-container" onclick="seekAudio(event)">
-          <div class="progress-bar" id="progressBar"></div>
-        </div>
-        <div class="volume-container">
-          <label for="volume">Volume:</label>
-          <input type="range" id="volume" min="0" max="1" step="0.1" value="1" oninput="setVolume(this.value)">
-        </div>
-      </div>
+        
+        <input type="range" value="0" id="progress">
+
       <div class="controllers">
         <div class="prev_btn">
           <img src="./resources/Stop_and_play_fill-1.svg" alt="rev_btn">
